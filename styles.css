@@ -70,10 +70,11 @@ main {
 }
 
 dialog {
-  left: 40vw;
-  top: 40vh;
+  left: 50%;
+  top: 50%;
   overflow: auto;
   padding: 2rem;
+  transform: translate(-50%, -50%);
 }
 
 dialog::backdrop {

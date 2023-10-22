@@ -14,10 +14,6 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-function showAddBookModal(e) {
-  dialog.showModal();
-}
-
 function closeAddBookModal(e) {
   const dialogDimensions = dialog.getBoundingClientRect();
   if (
@@ -31,6 +27,11 @@ function closeAddBookModal(e) {
 }
 
 function addBookToLibrary(e) {
+  const title = document.querySelector("input[id='title']").value;
+  const author = document.querySelector("input[id='author']").value;
+  const pages = document.querySelector("input[id='pages']").value;
+  const isRead = document.querySelector("input[id='isRead']").value;
+
   const book = new Book(title, author, pages, isRead);
   myLibrary.push(book);
 }
@@ -41,15 +42,26 @@ function displayAllBooks() {
   });
 }
 
-addBookToLibrary("The Hobbit", "Tolkien", 295, false);
-addBookToLibrary("The GE", "asa", 35, true);
-addBookToLibrary("The ASFAFA", "www", 311, false);
+const form = document.querySelector("#add-book-form");
+const modal = document.querySelector("dialog");
 
 const addBookModalButton = document.querySelector(".add-book-modal");
-addBookModalButton.addEventListener("click", showAddBookModal);
+addBookModalButton.addEventListener("click", e => modal.showModal());
 
-const dialog = document.querySelector("dialog");
-dialog.addEventListener("click", closeAddBookModal);
+modal.addEventListener("click", closeAddBookModal);
+modal.addEventListener("close", e => form.reset());
 
-const addBookButton = document.querySelector(".add-book");
+// Add user provided book to the library
+const addBookButton = document.querySelector("#add-book");
 addBookButton.addEventListener("click", addBookToLibrary);
+
+// Add some default books to the library
+const defaultBook1 = new Book("The Hobbit", "Tolkien", 295, false);
+const defaultBook2 = new Book("Dune", "Frank Herbert", 658, false);
+const defaultBook3 = new Book(
+  "Peril at End House",
+  "Agatha Christie",
+  287,
+  true
+);
+myLibrary.push(defaultBook1, defaultBook2, defaultBook3);
