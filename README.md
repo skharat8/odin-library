@@ -1,4 +1,5 @@
 <h1 align="center">Library App</h1>
+<p align="center">:link: <a href="https://skharat8.github.io/odin-library"><strong>Live Preview</strong></a></p>
 
 ## Built With
 
