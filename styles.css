@@ -32,6 +32,7 @@ header {
 }
 
 button {
+  font-family: "ConcreteRegular", sans-serif;
   line-height: 1;
   align-self: center;
   border: none;
