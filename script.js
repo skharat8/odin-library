@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
@@ -12,5 +14,17 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-theHobbit = new Book("The Hobbit", "Tolkien", 295, false);
-console.log(theHobbit.info());
+function addBookToLibrary(title, author, pages, isRead) {
+  const book = new Book(title, author, pages, isRead);
+  myLibrary.push(book);
+}
+
+function displayAllBooks() {
+  myLibrary.forEach(book => {
+    console.log(book);
+  });
+}
+
+addBookToLibrary("The Hobbit", "Tolkien", 295, false);
+addBookToLibrary("The GE", "asa", 35, true);
+addBookToLibrary("The ASFAFA", "www", 311, false);

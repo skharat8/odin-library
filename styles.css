@@ -1,5 +1,5 @@
 html {
-  font-family: sans-serif;
+  font-family: "ConcreteRegular", sans-serif;
   font-size: 62.5%;
   line-height: 1.25;
   box-sizing: border-box;
@@ -13,7 +13,54 @@ html {
   box-sizing: inherit;
 }
 
+:root {
+  --primary-color: darksalmon;
+  --primary-color-light: rgb(228, 195, 184);
+}
+
 body {
   font-size: 1.6rem;
   height: 100svh;
+}
+
+header {
+  display: flex;
+  gap: 2rem;
+  background-color: cornflowerblue;
+  padding: 2rem 6rem;
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.4);
+}
+
+button {
+  line-height: 1;
+  align-self: center;
+  border: none;
+  border-radius: 5px;
+  color: rgb(26, 24, 24);
+  background-color: var(--primary-color);
+  padding: 1.2rem 1.4rem 1rem 1.4rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.4);
+  transition: all 0.2s ease-in;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background-color: var(--primary-color-light);
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.4);
+  }
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.4);
+}
+
+.add-book-button {
+  margin-right: auto;
+}
+
+main {
+  background-color: bisque;
 }
