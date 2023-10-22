@@ -61,10 +61,58 @@ button:active {
   box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.4);
 }
 
-.add-book-button {
+.add-book-modal {
   margin-right: auto;
 }
 
 main {
   background-color: bisque;
+}
+
+dialog {
+  left: 40vw;
+  top: 40vh;
+  overflow: auto;
+  padding: 2rem;
+}
+
+dialog::backdrop {
+  background-color: rgba(100, 148, 237, 0.212);
+}
+
+form {
+  display: grid;
+  font-size: 2.2rem;
+  grid: repeat(4, 1fr) / auto minmax(80px, 200px);
+  gap: 2rem;
+
+  & input {
+    font-family: serif;
+    font-size: 80%;
+    padding-left: 2px;
+  }
+
+  & input[type="checkbox"] {
+    justify-self: left;
+  }
+
+  & button {
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    grid-column: 1 / -1;
+  }
+
+  @media (hover: hover) {
+    & button:hover {
+      color: black;
+      background-color: var(--primary-color);
+    }
+  }
+
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.4);
+  }
 }
