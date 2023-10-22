@@ -10,6 +10,12 @@
       href="https://fontlibrary.org//face/concrete"
       type="text/css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
@@ -30,7 +36,7 @@
           <input type="text" name="author" id="author" required />
 
           <label for="pages">Number of pages</label>
-          <input type="tel" name="pages" id="pages" required />
+          <input type="number" name="pages" id="pages" required />
 
           <label for="isRead">Read?</label>
           <input type="checkbox" name="isRead" id="isRead" />
@@ -38,6 +44,8 @@
           <button id="add-book">Add Book</button>
         </form>
       </dialog>
+
+      <div class="books-container"></div>
     </main>
   </body>
 </html>
