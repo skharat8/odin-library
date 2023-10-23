@@ -34,19 +34,20 @@ function addBookToLibrary(e) {
 
   const book = new Book(title, author, pages, isRead);
   myLibrary.push(book);
-  createBookCard(book);
+  createBookCard(book, myLibrary.length - 1);
 }
 
 function displayAllBooks() {
-  myLibrary.forEach(book => {
-    createBookCard(book);
+  myLibrary.forEach((book, index) => {
+    createBookCard(book, index);
   });
 }
 
-function createBookCard(book) {
+function createBookCard(book, libraryIndex) {
   // Create new HTML elements
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
+  bookCard.dataset.id = libraryIndex;
 
   const titleElement = document.createElement("span");
   const authorElement = document.createElement("span");
@@ -75,6 +76,7 @@ function createBookCard(book) {
   }
 
   readButton.addEventListener("click", toggleReadStatus);
+  removeButton.addEventListener("click", removeBook);
 
   // Attach elements to the DOM
   bookCard.appendChild(titleElement);
@@ -95,6 +97,21 @@ function toggleReadStatus(e) {
     e.target.style.backgroundColor = "seagreen";
     e.target.textContent = "Read";
   }
+}
+
+function removeBook(e) {
+  const idToRemove = parseInt(e.target.parentElement.parentElement.dataset.id);
+  const bookCard = document.querySelector(
+    `.book-card[data-id="${idToRemove}"]`
+  );
+
+  bookCard.remove();
+  for (let i = idToRemove + 1; i < myLibrary.length; ++i) {
+    const bookCard = document.querySelector(`.book-card[data-id="${i}"]`);
+    bookCard.dataset.id -= 1;
+  }
+
+  myLibrary.splice(idToRemove, 1);
 }
 
 const form = document.querySelector("#add-book-form");
