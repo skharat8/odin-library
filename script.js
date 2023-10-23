@@ -56,11 +56,6 @@ function createBookCard(book) {
   const readButton = document.createElement("button");
   const removeButton = document.createElement("button");
 
-  // Define the styling for various elements
-  actionsDiv.style.display = "flex";
-  actionsDiv.style.gap = "1rem";
-  titleElement.style.fontWeight = "bold";
-
   // Specify the text content
   titleElement.textContent = `${book.title}`;
   authorElement.textContent = `by ${book.author}`;
@@ -68,11 +63,18 @@ function createBookCard(book) {
   readButton.textContent = book.isRead ? "Read" : "Not Read";
   removeButton.textContent = "Remove";
 
+  // Define the styling for various elements
+  actionsDiv.style.display = "flex";
+  actionsDiv.style.gap = "1rem";
+  titleElement.style.fontWeight = "bold";
+
   if (book.isRead) {
     readButton.style.backgroundColor = "seagreen";
   } else {
     readButton.style.backgroundColor = "firebrick";
   }
+
+  readButton.addEventListener("click", toggleReadStatus);
 
   // Attach elements to the DOM
   bookCard.appendChild(titleElement);
@@ -83,6 +85,16 @@ function createBookCard(book) {
   bookCard.appendChild(actionsDiv);
 
   booksContainer.appendChild(bookCard);
+}
+
+function toggleReadStatus(e) {
+  if (e.target.textContent === "Read") {
+    e.target.style.backgroundColor = "firebrick";
+    e.target.textContent = "Not Read";
+  } else {
+    e.target.style.backgroundColor = "seagreen";
+    e.target.textContent = "Read";
+  }
 }
 
 const form = document.querySelector("#add-book-form");
