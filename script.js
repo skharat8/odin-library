@@ -68,6 +68,7 @@ function createBookCard(book, libraryIndex) {
   actionsDiv.style.display = "flex";
   actionsDiv.style.gap = "1rem";
   titleElement.style.fontWeight = "bold";
+  readButton.style.transition = "all 0.4s ease-in";
 
   if (book.isRead) {
     readButton.style.backgroundColor = "seagreen";
