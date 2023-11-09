@@ -1,29 +1,32 @@
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-}
-
-Book.prototype.getInfo = function () {
-  let info = this.title + " by " + this.author + ", " + this.pages + " pages, ";
-  info += isRead ? "read" : "not read yet";
-  return info;
-};
-
-Book.prototype.toggleReadStatus = function (e) {
-  if (e.target.textContent === "Read") {
-    e.target.style.backgroundColor = "firebrick";
-    e.target.textContent = "Not Read";
-  } else {
-    e.target.style.backgroundColor = "seagreen";
-    e.target.textContent = "Read";
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
   }
 
-  this.isRead = !this.isRead;
-};
+  get info() {
+    let info =
+      this.title + " by " + this.author + ", " + this.pages + " pages, ";
+    info += isRead ? "read" : "not read yet";
+    return info;
+  }
+
+  toggleReadStatus(e) {
+    if (e.target.textContent === "Read") {
+      e.target.style.backgroundColor = "firebrick";
+      e.target.textContent = "Not Read";
+    } else {
+      e.target.style.backgroundColor = "seagreen";
+      e.target.textContent = "Read";
+    }
+
+    this.isRead = !this.isRead;
+  }
+}
 
 function closeAddBookModal(e) {
   const modalDimensions = modal.getBoundingClientRect();
